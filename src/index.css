@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+
+#blogs{
+  background-image: url('https://plus.unsplash.com/premium_photo-1683309565422-77818a287060?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YmxvZ3xlbnwwfHwwfHx8MA%3D%3D');
+  min-height: 100vh;
+  width:100%;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+  @media (max-width: 768px) {
+  #blogs {
+    background-attachment: scroll;
+  }
+}

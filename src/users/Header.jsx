@@ -1,7 +1,7 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import { addBlogApi } from '../services/allApi'
 import { toast, ToastContainer } from 'react-toastify'
 import { allBlogAddContext } from '../context/ContextShare'
@@ -17,6 +17,7 @@ function Header() {
     })
 
 
+const navigate = useNavigate()
     //console.log(medDetails)
     const handleReset = () => {
         setblogDetails({
@@ -93,7 +94,7 @@ function Header() {
                 <div className='flex justify-center'>
                    { token &&<div className='md:flex justify-center items-center  '>
 
-                        <button type='button' onClick={() => setModalStatus(true)} className='border border-cyan-950 rounded px-3 py-2 bg-cyan-800 text-white ms-3'>Create New Blog</button>
+                        <button type='button' onClick={() => setModalStatus(true)} className='border border-cyan-950 rounded px-3 py-2 bg-cyan-800 text-white ms-3'>Create Your Blog</button>
 
                         <Link  to={'/blog'}><button type='button' onClick={() => setModalStatus(true)} className='border border-cyan-950 rounded px-3 py-2 md:mt-0 mt-2 bg-cyan-800 text-white ms-3'>Your Blogs</button></Link>
                     </div>}

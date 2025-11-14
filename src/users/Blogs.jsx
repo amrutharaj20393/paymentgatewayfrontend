@@ -13,7 +13,7 @@ function Blogs() {
     const [blogDetails, setblogDetails] = useState({})
     const [preview, setpreview] = useState("")
     const [existingProfileImage, setExistingProfileImage] = useState("")
-     const [deleteStatus, setDeleteStatus] = useState({})
+    const [deleteStatus, setDeleteStatus] = useState({})
     //const [editBlogDetails, seteditBlogDetails] = useState({})
     const getHomeBlog = async (token) => {
         // console.log(token)
@@ -26,10 +26,10 @@ function Blogs() {
         console.log(result)
         if (result.status == 200) {
             sethomeBlog(result.data)
-            
+
         }
     }
-    
+
 
     const handleupload = (e) => {
         console.log(e.target.files[0])
@@ -39,11 +39,11 @@ function Blogs() {
         const url = URL.createObjectURL(e.target.files[0])
         console.log(url)
         setpreview(url)
-        
+
     }
-//console.log(blogDetails)
+    //console.log(blogDetails)
     const handleSubmit = async () => {
-        const { _id,title, description, category, imageurl } = blogDetails
+        const { _id, title, description, category, imageurl } = blogDetails
         if (!title || !description || !category) {
             toast.info('please fill details')
         }
@@ -64,26 +64,26 @@ function Blogs() {
                 toast.success("Blog Uodated successfully")
                 //setAddMedStatus(result.data)
                 //setAllMedAddStatus(result.data)
-              //  handleReset()
-              setModalStatus(false)
+                //  handleReset()
+                setModalStatus(false)
             }
             else if (result.data == 400) {
                 toast.warning(result.response.data)
-               // handleReset()
+                // handleReset()
             }
             else {
                 toast.error('something went wrong')
-               // handleReset()
+                // handleReset()
             }
         }
     }
 
-     const deleteBlog = async (id) => {
+    const deleteBlog = async (id) => {
 
         const reqHeader = {
-                "Authorization": `Bearer ${token}`
-            }
-        const result = await deleteBlogApi(id,reqHeader)
+            "Authorization": `Bearer ${token}`
+        }
+        const result = await deleteBlogApi(id, reqHeader)
         ///console.log(result)
         if (result.status == 200) {
             toast.success("Deleted successfully")
@@ -99,9 +99,9 @@ function Blogs() {
         if (storedtoken) {
             setToken(storedtoken)
             //setSearchKey("")'
-           // const user = JSON.parse(sessionStorage.getItem("existingUser"))
+            // const user = JSON.parse(sessionStorage.getItem("existingUser"))
             //setUserDetails({ username: user.username, password: user.password, cpassword: user.password})
-           // setExistingProfileImage(user.profile)
+            // setExistingProfileImage(user.profile)
         }
 
     }, [])
@@ -110,48 +110,85 @@ function Blogs() {
         if (token) {
             getHomeBlog(token)
         }
-    }, [token,modalstatus,deleteStatus]);
+    }, [token, modalstatus, deleteStatus]);
 
 
 
 
     return (
         <>
-            <section className='flex justify-center items-center flex-col md:p-10 md:px-40 p-5'>
-                <h1 className='text-5xl  font-bold text-cyan-900'>My Blogs</h1>
 
-                <div className='md:grid grid-cols-4 w-full mt-5 '>
-                    {homeBlog?.length > 0 ?
-                        homeBlog?.map((item, index) => (
 
-                            <div className='p-3 shadow bg-gray-200 ms-5 mt-5' key={index}>
-                                <img src={`${serverUrl}/serverupload/${item?.imageurl}`} alt="" style={{ width: '100%', height: '200px' }} />
-                                <div className='flex  justify-center items-center flex-col ms-3'>
-                                    <p className='text-blue-700 text-bold text-center'>{item?.title}</p>
-                                    <h3 className='text-gray-500'>{item?.description}</h3>
-                                    <h3 className='text-blue-700'>Category:<span className='text-red-700'>{item?.category}</span></h3>
+            <div id="blogs" className="flex flex-col items-center w-full">
+                <h1 className="text-4xl md:text-5xl font-bold text-white mt-4">My Blogs</h1>
 
+
+                <div className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-6  w-full px-5 mt-6">
+
+                    {homeBlog?.length > 0 ? (
+                        homeBlog.map((item, index) => (
+                            <div
+                                key={index}
+                                className="p-4 shadow bg-gray-200 rounded-lg"
+                            >
+
+                                <img
+                                    src={`${serverUrl}/serverupload/${item?.imageurl}`}
+                                    alt="Blog"
+                                    className="w-full h-70 object-cover rounded-md"
+                                />
+
+                                <div className="flex flex-col items-center mt-3">
+                                    <p className="text-blue-700 font-bold text-center text-lg">
+                                        {item?.title}
+                                    </p>
+                                    <p className="text-gray-600 text-center text-sm mt-1">
+                                        {item?.description}
+                                    </p>
+                                    <p className="text-blue-700 text-sm mt-1">
+                                        Category:
+                                        <span className="text-red-700"> {item?.category}</span>
+                                    </p>
                                 </div>
 
-                                <div className="bg-gray-50 px-4 py-2 sm:flex sm:flex-row-reverse sm:px-6">
-                                    <button type="button" onClick={() => {
-                                        setModalStatus(true)
-                                        setblogDetails(item)
-                                    }
-                                    } className="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-green-500 sm:ml-3 sm:w-auto">Update Blog</button>
-                                    <button type="button" onClick={() => deleteBlog(item?._id)} className="mt-3 inline-flex w-full justify-center rounded-md bg-orange-600 px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto">Delete</button>
+                                <div className="mt-4 flex flex-col sm:flex-row sm:justify-between gap-3">
+                                    <button
+                                        onClick={() => {
+                                            setModalStatus(true);
+                                            setblogDetails(item);
+                                        }}
+                                        className="w-full sm:w-auto bg-green-600 px-3 py-2 text-sm font-semibold text-white rounded hover:bg-green-500"
+                                    >
+                                        Update
+                                    </button>
+
+                                    <button
+                                        onClick={() => deleteBlog(item?._id)}
+                                        className="w-full sm:w-auto bg-orange-600 px-3 py-2 text-sm font-semibold text-white rounded hover:bg-orange-500"
+                                    >
+                                        Delete
+                                    </button>
                                 </div>
                             </div>
-
-                        )) : <p>Loading</p>}
-
+                        ))
+                    ) : (
+                        <p className="text-white text-lg mt-10">Loading...</p>
+                    )}
                 </div>
 
-<div className='md:flex justify-center items-center mt-5'>
-     <Link to={'/'}><button className='bg-blue-600 px-4 py-3 text-white mb-5'>back</button></Link> 
-</div>
+                {/* Back Button */}
+                <div className="flex justify-center mt-6">
+                    <Link to="/">
+                        <button className="bg-blue-600 px-4 py-3 text-white rounded-md">
+                            Back
+                        </button>
+                    </Link>
+                </div>
+            </div>
 
-            </section>
+
+
+
             {modalstatus && <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
 
                 <div className="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
