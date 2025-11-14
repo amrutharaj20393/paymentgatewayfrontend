@@ -1,25 +1,25 @@
 import React, { useState } from 'react'
-import { amountApi } from '../services/allApi';
+//import { amountApi } from '../services/allApi';
 
 function Amount() {
     const [amount, setAmount] = useState("");
 
-    const makePayment = async (data) => {
-        console.log(data)
-        const result = await amountApi({ data })
-        console.log(result)
-        window.location.href = result.data.url;
+    // const makePayment = async (data) => {
+    //     console.log(data)
+    //     const result = await amountApi({ data })
+    //     console.log(result)
+    //     window.location.href = result.data.url;
 
 
 
-        ///console.log(data)
+    //     ///console.log(data)
 
-    }
+    // }
 
 
     return (
         <>
-            <div>
+            {/* <div>
                 <h1 className='text-red-500 text-3xl'>Task By:Amrutha Raj</h1>
                 <div >
                     <div>
@@ -32,7 +32,7 @@ function Amount() {
 
 
                 </div>
-            </div>
+            </div> */}
 
         </>
     )
