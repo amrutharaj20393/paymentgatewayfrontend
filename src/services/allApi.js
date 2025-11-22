@@ -38,3 +38,43 @@ export const deleteBlogApi = async (id,reqHeader) => {
 
     return await commonApi('DELETE', `${serverUrl}/delete-blog/${id}`,'',reqHeader)
 }
+
+
+
+    //amazon
+export const amazonregisterApi = async (reqBody) => {
+    return await commonApi('POST', `${serverUrl}/amazonregister`, reqBody)
+
+}
+
+export const amazonloginemailApi = async (reqBody) => {
+    return await commonApi('POST', `${serverUrl}/amazonrloginemail`, reqBody)
+
+}
+
+export const amazonloginApi = async (email) => {
+    return await commonApi('GET', `${serverUrl}/amazonrlogin?email=${email}`)
+
+}
+
+
+export const amazonpasswordApi = async (reqBody) => {
+    return await commonApi('POST', `${serverUrl}/amazonrpassword`, reqBody)
+
+}
+
+export const amazonallProductApi = async () => {
+    return await commonApi('GET', `${serverUrl}/amazonallProduct`)
+
+}
+export const addToCartAmazonApi = async (reqBody) => {
+
+    //query parameterbaseurl?key=value
+    return await commonApi('POST', `${serverUrl}/cart`, reqBody)
+}
+
+export const getCartApi = async (email) => {
+    return await commonApi('GET', `${serverUrl}/getCart?email=${email}`)
+    //get-all-medicines?search=${searchKey}
+
+}

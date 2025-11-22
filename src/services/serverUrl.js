@@ -1,3 +1,3 @@
 export const serverUrl='https://paymentgatwaybackend.onrender.com'
 
-//export const serverUrl='http://localhost:5000'
+//export const serverUrl='http://localhost:3000'
