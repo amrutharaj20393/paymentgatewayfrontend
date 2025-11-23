@@ -53,7 +53,7 @@ function Hero() {
 
       </div>
       <div className="container my-5">
-        <h2 className="text-center mb-4 fw-bold">Trending Products</h2>
+        <h2 className="text-center mb-4 fw-bold text-white">Trending Products</h2>
 
         <div className="row g-4">
 

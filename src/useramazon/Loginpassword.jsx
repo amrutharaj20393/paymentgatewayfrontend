@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { amazonloginApi, amazonloginemailApi, amazonpasswordApi } from "../services/allApi";
 import { toast, ToastContainer } from 'react-toastify'
-import { otpContext } from "../context/ContextShare";
+import { AuthContext, otpContext } from "../context/ContextShare";
 function Loginpassword() {
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
+       const { token, setToken } = useContext(AuthContext);
     //const { userdetails } = useContext(userContext)
     const navigate = useNavigate()
 
@@ -27,7 +28,9 @@ function Loginpassword() {
             if (result.status == 200) {
                 //sessionStorage.setItem("existingUser", JSON.stringify(result.data.existinguser))
                 sessionStorage.setItem("token", result.data.token)
-                toast.success(" Success")
+                  setToken(result.data.token);   // Header updates immediately
+                                
+                toast.success("Login Success")
                 setTimeout(() => { navigate("/") }, 1000
                 );
 

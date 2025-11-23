@@ -78,3 +78,31 @@ export const getCartApi = async (email) => {
     //get-all-medicines?search=${searchKey}
 
 }
+
+//delete a medicine
+export const deleteItemApi = async (id) => {
+
+    return await commonApi('DELETE', `${serverUrl}/deleteitem/${id}`)
+}
+
+//delete a medicine
+export const updateQuantityApi = async (reqBody) => {
+
+    return await commonApi('PUT', `${serverUrl}/updatequantity`,reqBody)
+}
+//
+//delete a medicine
+export const uodateOrderCartApi = async (reqBody) => {
+
+    return await commonApi('PUT', `${serverUrl}/updateorderStatus`,reqBody)
+}
+export const GoogleRegisterApi = async (reqBody) => {
+    return await commonApi('POST', `${serverUrl}/GoogleRegister`, reqBody)
+}
+
+
+export const orderListApi = async (email) => {
+    return await commonApi('GET', `${serverUrl}/orderlist?email=${email}`)
+    //get-all-medicines?search=${searchKey}
+
+}

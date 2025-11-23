@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import { Container, Row, Col, Carousel } from "react-bootstrap";
 import Card from 'react-bootstrap/Card';
@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify'
 import { addToCartAmazonApi, amazonallProductApi } from '../services/allApi';
+import { cartcountContext } from '../context/ContextShare';
 
 function Appliances() {
     const [productlist, setProductlist] = useState([])
@@ -14,6 +15,7 @@ function Appliances() {
     const [tempArray1, setTempArray1] = useState([])
     const [tempArray2, setTempArray2] = useState([])
      const [email, setEmail] = useState("")
+      const { setCartCount } = useContext(cartcountContext)
     const getProductdet = async () => {
         //console.log("hai")
         const result = await amazonallProductApi()
@@ -67,7 +69,7 @@ function Appliances() {
         if (result.status == 200) {
             console.log(result.data)
             toast.success("Add To Cart Successfully")
-            //setCartMedDt(result.data)
+            setCartCount(result.data)
            // setCartstatus(result.data)
 
         }
@@ -87,8 +89,19 @@ function Appliances() {
     }, [])
     return (
         <>
-            <div className='mt-3 bg-white p-3'>
-                <Row>
+            <div className='mt-3 bg-white '>
+                <div className="d-flex justify-content-between flex-wrap-0 align-items-center  shadow-2xl p-0">
+                    <h4 className="fw-bold fw-light me-4">Amazon Home</h4>
+                    <h5 className="me-4 fw-light">Kitchen</h5>
+                    <h5 className="me-4 fw-light">Large Appliances</h5>
+                    <h5 className="me-4 fw-light">Dining</h5>
+                    <h5 className="me-4 fw-light">Furniture</h5>
+                    <h5 className="me-4 fw-light">Watches</h5>
+                    <h5 className="me-4 fw-light">Home Decor</h5>
+                    <h5 className="me-4 fw-light">Garden</h5>
+                    <h5 className="me-4 fw-light">Storage</h5>
+                </div>
+                <Row className='mt-2'>
                     <Col sm={4}>
 
                         <h4 className='ms-2'>Delivery day</h4>

@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify'
-import { amazonloginemailApi, amazonregisterApi } from "../services/allApi";
+import { amazonloginemailApi, amazonregisterApi, GoogleRegisterApi } from "../services/allApi";
 import { otpContext } from "../context/ContextShare";
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
 
 function Register() {
     const [userdetails, setUserDetails] = useState({
@@ -53,6 +55,27 @@ function Register() {
         }
 
     }
+
+     const handleGooglelogin = async (credentialResponse) => {
+            const details = jwtDecode(credentialResponse.credential)
+            console.log(details)
+
+             const result = await GoogleRegisterApi({ username: details.name, email: details.email, password: 'googlepassword' })
+    //console.log(result)
+    if (result.status == 200) {
+      toast.success("Register Successfully")
+      sessionStorage.setItem("existingUser", JSON.stringify(result.data.existinguser))
+      sessionStorage.setItem("token", result.data.token)
+       setTimeout(() => {
+                    navigate('/')
+                }, 1000)
+
+
+    }
+    else {
+      toast.error("something went wrong")
+    }
+        }
     return (
         <div className="d-flex flex-column align-items-center mt-5">
             <img
@@ -97,21 +120,24 @@ function Register() {
 
                 <div className="mt-3">
                     <span className="small">Already have an account? </span>
-                    <Link className="text-primary small" to="/login">
+                    <Link className="text-primary small" to="/Loginpage">
                         Sign in
                     </Link>
                 </div>
 
             </div>
             <span className="small text-muted">Or</span>
-            <button className="bg-light border w-25 py-2 mt-3 mb-3 rounded d-flex justify-content-center align-items-center gap-2">
-                <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgFBviof7MeRdm0h8w_l9JBpqxLzWru9IMnQ&s"
-                    alt="Google"
-                    style={{ width: "20px" }}
+            
+              
+                <GoogleLogin width={"350px"} 
+                    onSuccess={credentialResponse => {
+                        console.log(credentialResponse)
+                        handleGooglelogin(credentialResponse)
+                    }}
+                    onError={() => {
+                        console.log('Login Failed')
+                    }}
                 />
-                <span className="small fw-bold">Sign in with Google</span>
-            </button>
             <ToastContainer theme='colored' position='top-center' autoClose={2000} />
         </div>
     );

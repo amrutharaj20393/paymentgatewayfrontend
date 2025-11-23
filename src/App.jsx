@@ -19,6 +19,7 @@ import Login from './useramazon/Login'
 import Otppage from './useramazon/Otppage'
 import Register from './useramazon/Register'
 import Loginpassword from './useramazon/Loginpassword'
+import Orderpage from './useramazon/Orderpage'
 
 
 
@@ -46,6 +47,7 @@ function App() {
         <Route path='/checkout' element={<Checkout />}></Route>
         <Route path='/Otp' element={<Otppage/>}></Route>
         <Route path='/Loginpassword' element={<Loginpassword/>}></Route>
+         <Route path='/orderpage' element={<Orderpage/>}></Route>
 
         <Route path='/sucess' element={<Payment />}></Route>
 

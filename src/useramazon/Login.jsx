@@ -1,30 +1,34 @@
-import React, {  useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { amazonloginApi, amazonloginemailApi } from "../services/allApi";
+import { amazonloginApi, amazonloginemailApi, GoogleRegisterApi } from "../services/allApi";
 import { toast, ToastContainer } from 'react-toastify'
-import { otpContext } from "../context/ContextShare";
+import { AuthContext, otpContext } from "../context/ContextShare";
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
 function Login() {
     const [email, setEmail] = useState("")
-   //const { userdetails } = useContext(userContext)
+   
+    //const { userdetails } = useContext(userContext)
     const navigate = useNavigate()
-    
+
     const handleotp = async () => {
 
-       // console.log(email)
+        // console.log(email)
 
         if (!email) {
             toast.info("please fill all details")
         }
         else {
 
-            const result = await amazonloginApi( email )
+            const result = await amazonloginApi(email)
             console.log(result)
             if (result.status == 200) {
-                 sessionStorage.setItem("existingUser", JSON.stringify(result.data.existinguser))
-
+                sessionStorage.setItem("existingUser", JSON.stringify(result.data.existinguser))
+              
                 toast.success(" Success")
-                
-               
+                navigate('/Loginpassword')
+
+
 
             }
             else if (result.status == 400) {
@@ -38,6 +42,25 @@ function Login() {
             }
         }
 
+    }
+    const handleGooglelogin = async (credentialResponse) => {
+        const details = jwtDecode(credentialResponse.credential)
+        console.log(details)
+        const result = await GoogleRegisterApi({ username: details.name, email: details.email, password: 'googlepassword' })
+        //console.log(result)
+        if (result.status == 200) {
+            toast.success("Login Successfully")
+            sessionStorage.setItem("existingUser", JSON.stringify(result.data.existinguser))
+            sessionStorage.setItem("token", result.data.token)
+            setTimeout(() => {
+                navigate('/')
+            }, 1000)
+
+
+        }
+        else {
+            toast.error("something went wrong")
+        }
     }
     return (
         <div className="d-flex flex-column align-items-center mt-5">
@@ -66,13 +89,13 @@ function Login() {
                 />
 
                 {/* Continue Button */}
-                
-               <Link to='/Loginpassword'><button
+
+                <button
                     className="btn w-100"
                     style={{ background: "#f0c14b", borderColor: "#a88734" }} onClick={handleotp}
                 >
                     Continue
-                </button></Link> 
+                </button>
 
 
                 <p className="small mt-3">
@@ -104,15 +127,19 @@ function Login() {
                 Create your Amazon account
             </Link>
             <span className="small text-muted">Or</span>
-            <button className="bg-light border w-25 py-2 mt-3 mb-3 rounded d-flex justify-content-center align-items-center gap-2">
-                <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgFBviof7MeRdm0h8w_l9JBpqxLzWru9IMnQ&s"
-                    alt="Google"
-                    style={{ width: "20px" }}
-                />
-                <span className="small fw-bold">Sign in with Google</span>
-            </button>
-             <ToastContainer theme='colored' position='top-center' autoClose={2000} />
+
+
+            {/* <span className="small fw-bold">Sign in with Google</span> */}
+            <GoogleLogin width={"350px"} height={"150px"}
+                onSuccess={credentialResponse => {
+                    console.log(credentialResponse)
+                    handleGooglelogin(credentialResponse)
+                }}
+                onError={() => {
+                    console.log('Login Failed')
+                }}
+            />;
+            <ToastContainer theme='colored' position='top-center' autoClose={2000} />
         </div>
     );
 }

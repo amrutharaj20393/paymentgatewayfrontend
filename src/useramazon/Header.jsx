@@ -1,11 +1,53 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Form, Button } from 'react-bootstrap';
+import { useLocation } from "react-router-dom";
+import { AuthContext, cartcountContext } from "../context/ContextShare";
+import { getCartApi } from "../services/allApi";
 export default function Header() {
   const [open, setOpen] = useState(false);
+  //const [email, setEmail] = useState("")
+ // const [token, setToken] = useState(() => sessionStorage.getItem("token") || "");
+  const { cartcount, setCartCount } = useContext(cartcountContext)
+  const navigate = useNavigate()
+  const location = useLocation();
+  const { token, setToken } = useContext(AuthContext);
+  //const navigate = useNavigate();
 
+  const handlelogout = () => {
+    sessionStorage.removeItem("existingUser")
+    sessionStorage.removeItem("token")
+    setToken("")
+    navigate('/')
+  }
+
+  const getCartDet = async () => {
+    const user = JSON.parse(sessionStorage.getItem("existingUser"));
+    const email = user.email
+    console.log(email)
+    //console.log(emailid)
+    const result = await getCartApi(email)
+    console.log(result)
+    if (result.status == 200) {
+
+      setCartCount(result.data.cartItems)
+      //if user donot change the quantity field
+
+    }
+    else if (result.status == 401) {
+      console.log("no cart data")
+      //setAMedicine([])
+
+    }
+  }
+ 
+  useEffect(() => {
+    getCartDet()
+  }, [])
+
+  //console.log(cartcount)
   return (
     <>
       <header className="bg-black text-white w-full">
@@ -70,18 +112,33 @@ export default function Header() {
 
 
           <div className="flex items-center gap-4">
-           
-            <Link to="/Loginpage" className="hidden md:flex items-center gap-1 hover:text-yellow-400">
-              <FontAwesomeIcon icon={faUser} />
-              <span>Login</span>
-            </Link>
+            {token ? (
+              <Link to="/" onClick={handlelogout} className="hidden md:flex items-center gap-1 hover:text-yellow-400">
+                <FontAwesomeIcon icon={faUser} />
+                <span >Logout</span>
+              </Link>
 
-            <Link to="/Cart" className="relative flex items-center hover:text-yellow-400">
+            ) : (
+              <Link to="/Loginpage" className="hidden md:flex items-center gap-1 hover:text-yellow-400">
+                <FontAwesomeIcon icon={faUser} />
+                <span>Login</span>
+              </Link>
+            )}
+
+
+
+
+            {token && <Link to="/orderpage" className="hidden md:flex items-center gap-1 hover:text-yellow-400">
+
+              <span >Orders</span>
+            </Link>
+            }
+            {token && <Link to="/Cart" className="relative flex items-center hover:text-yellow-400">
               <FontAwesomeIcon icon={faShoppingCart} className="fa-lg" />
               <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-1 rounded-full">
-                3
+                {cartcount?.length}
               </span>
-            </Link>
+            </Link>}
 
             {/* Hamburger Menu for Mobile */}
             <button className="md:hidden" onClick={() => setOpen(!open)}>
@@ -119,15 +176,15 @@ export default function Header() {
       {/* Desktop Navigation */}
       <nav className="hidden md:flex bg-secondary  text-white ">
         <ul className="flex  w-full">
-          <li className='mx-2 mt-3 md:mt-0 font-bold'>All</li>
+          <li className='mx-2 mt-3 md:mt-0 font-bold'><Link to="/" className="text-white">All</Link></li>
           <li className='mx-2 mt-3 md:mt-0 font-bold'>Today's Deals</li>
           <li className='mx-2 mt-3 md:mt-0 font-bold'>
-            <Link to="/appliances" className="no-underline">Electronics & Home Appliances</Link>
+            <Link to="/appliances" className="no-underline text-white">Electronics & Home Appliances</Link>
           </li>
           <li className='mx-2 mt-3 md:mt-0 font-bold'>Mobiles</li>
           <li className='mx-2 mt-3 md:mt-0 font-bold'>Home & Kitchen</li>
           <li className='mx-3 mt-3 md:mt-0 font-bold'>
-            <Link to='/fashion' className="no-underline">Fashion</Link>
+            <Link to='/fashion' className="no-underline text-white">Fashion</Link>
           </li>
         </ul>
       </nav>
