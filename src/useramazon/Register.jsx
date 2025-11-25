@@ -35,7 +35,7 @@ function Register() {
            
                 if (result1.status == 200) {
                     const result = await amazonloginemailApi({ email })
-                    // console.log(result)
+                     console.log(result)
 
                     toast.success(" Otp send to your mail id")
 
