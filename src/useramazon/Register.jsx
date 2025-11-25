@@ -14,16 +14,16 @@ function Register() {
     })
     //const [error,setError]=useState("")
     const { setOtp } = useContext(otpContext)
-     const { setGoogleStatus } = useContext(googleStatusContext)
+    const { setGoogleStatus } = useContext(googleStatusContext)
     const navigate = useNavigate()
 
     const handleRegister = async () => {
-        
+
         const { username, email, password } = userdetails
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             //setError("Invalid email format!");
-             toast.warning("Invalid email format!")
+            toast.warning("Invalid email format!")
             return;
         }
         if (!username || !email || !password) {
@@ -32,36 +32,39 @@ function Register() {
         else {
             console.log(username, email, password)
             const result1 = await amazonregisterApi({ username, email, password })
-           // console.log(result1)
-            if (result1.status == 200) {
-                const result = await amazonloginemailApi({ email })
-               // console.log(result)
+           
+                if (result1.status == 200) {
+                    const result = await amazonloginemailApi({ email })
+                    // console.log(result)
 
-                toast.success(" Success")
+                    toast.success(" Otp send to your mail id")
 
-                setOtp(result.data.otp)
-                setTimeout(() => {
-                    navigate('/Otp')
-                }, 1000)
+                    setOtp(result.data.otp)
+                    setTimeout(() => {
+                        navigate('/Otp')
+                    }, 1000)
 
-            }
-            else if (result.status == 400) {
+                }
+                else if (result1.status == 400) {
 
-                toast.warning(result.response.data)
-                setUserDetails({
-                    username: "",
-                    email: "",
-                    password: ""
-                })
-            }
-            else {
-                toast.error("something went wrong")
-                setUserDetails({
-                    username: "",
-                    email: "",
-                    password: ""
-                })
-            }
+                    toast.warning("Email id already registered")
+                    setUserDetails({
+                        username: "",
+                        email: "",
+                        password: ""
+                    })
+                }
+                else {
+                    toast.error("something went wrong")
+                    setUserDetails({
+                        username: "",
+                        email: "",
+                        password: ""
+                    })
+                }
+            
+            // console.log(result1)
+
         }
 
     }

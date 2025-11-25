@@ -64,37 +64,37 @@ function Hero() {
               <div className="row g-3">
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card border-0">
                     <img src="https://m.media-amazon.com/images/G/31/IMG20/Home/2024/HFRevamp/Layers._SS400_QL85_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Cushion Covers,bedsheets & more</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/G/31/IMG20/Home/2024/HFRevamp/India_Inspired._SS400_QL85_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Figurines ,vases & More</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/G/31/IMG20/Home/2024/HFRevamp/Bohemian-styling-REVISED._SS400_QL85_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Home storage</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/G/31/IMG20/Home/2024/HFRevamp/Status._SS400_QL85_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Lighting solutions</p>
                     </div>
                   </div>
                 </div>
@@ -110,37 +110,37 @@ function Hero() {
               <div className="row g-3">
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/I/31bz5A-34KL._SR240,220_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Air Conditioners</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/I/31h1KeIto8L._SR480,440_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Refrigerators</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/I/41z7nDJEy4L._SR480,440_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Micro waves</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/I/51yW87aqMQL._SR480,440_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Washing machine</p>
                     </div>
                   </div>
                 </div>
@@ -155,37 +155,37 @@ function Hero() {
               <div className="row g-3">
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/G/31/img24/BAUheadphone/1-Boat._CB543806970_.png" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Starting @249|boat</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/G/31/img24/BAUheadphone/7-Noise._CB543806970_.png" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Starting @249|boat</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/G/31/img24/BAUheadphone/5-Boult._CB543806970_.png" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Starting @249|boat</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/G/31/img24/BAUheadphone/16-Zebronics._CB543806970_.png" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Starting @249|boat</p>
                     </div>
                   </div>
                 </div>
@@ -202,37 +202,37 @@ function Hero() {
               <div className="row g-3">
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/I/61A2ddWFQxL._AC_UL480_FMwebp_QL65_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Cleaning accessories</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/I/91BAZAi70CL._AC_UL480_FMwebp_QL65_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Tyre & rim care</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/I/71HY+ebyX9L._AC_UL480_FMwebp_QL65_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Helmets</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/I/71VJI9YScVL._AC_UL480_FMwebp_QL65_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Vaccum cleaner</p>
                     </div>
                   </div>
                 </div>
@@ -251,37 +251,37 @@ function Hero() {
               <div className="row g-3">
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/G/31/IMG20/Home/2024/HFRevamp/Layers._SS400_QL85_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Women's Clothing</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/G/31/IMG20/Home/2024/HFRevamp/India_Inspired._SS400_QL85_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Footwear</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/G/31/IMG20/Home/2024/HFRevamp/Bohemian-styling-REVISED._SS400_QL85_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Watches</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/G/31/IMG20/Home/2024/HFRevamp/Status._SS400_QL85_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Fashion</p>
                     </div>
                   </div>
                 </div>
@@ -297,16 +297,16 @@ function Hero() {
               <div className="row g-3">
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/I/31bz5A-34KL._SR240,220_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Spin mops,wipes & more</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/I/31h1KeIto8L._SR480,440_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
                       <p className="card-text small">Short description</p>
@@ -315,7 +315,7 @@ function Hero() {
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/I/41z7nDJEy4L._SR480,440_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
                       <p className="card-text small">Short description</p>
@@ -324,7 +324,7 @@ function Hero() {
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/I/51yW87aqMQL._SR480,440_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
                       <p className="card-text small">Short description</p>
@@ -342,37 +342,37 @@ function Hero() {
               <div className="row g-3">
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/G/31/img24/BAUheadphone/1-Boat._CB543806970_.png" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Bathroom hardware</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/G/31/img24/BAUheadphone/7-Noise._CB543806970_.png" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Hammers</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/G/31/img24/BAUheadphone/5-Boult._CB543806970_.png" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Extension Boards</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/G/31/img24/BAUheadphone/16-Zebronics._CB543806970_.png" className="card-img-top" />
                     <div className="card-body p-2">
-                      <p className="card-text small">Short description</p>
+                      <p className="card-text small">Plugs</p>
                     </div>
                   </div>
                 </div>
@@ -389,7 +389,7 @@ function Hero() {
               <div className="row g-3">
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/I/61A2ddWFQxL._AC_UL480_FMwebp_QL65_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
                       <p className="card-text small">Short description</p>
@@ -398,7 +398,7 @@ function Hero() {
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/I/91BAZAi70CL._AC_UL480_FMwebp_QL65_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
                       <p className="card-text small">Short description</p>
@@ -407,7 +407,7 @@ function Hero() {
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/I/71HY+ebyX9L._AC_UL480_FMwebp_QL65_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
                       <p className="card-text small">Short description</p>
@@ -416,7 +416,7 @@ function Hero() {
                 </div>
 
                 <div className="col-6">
-                  <div className="card">
+                  <div className="card  border-0">
                     <img src="https://m.media-amazon.com/images/I/71VJI9YScVL._AC_UL480_FMwebp_QL65_.jpg" className="card-img-top" />
                     <div className="card-body p-2">
                       <p className="card-text small">Short description</p>

@@ -98,8 +98,8 @@ function Appliances() {
                 <div className="d-flex justify-content-between flex-wrap-0 align-items-center  shadow-2xl p-0">
                     <h4 className="fw-bold fw-light me-4">Amazon Home</h4>
                     {/* <h5 className="me-4 fw-light">Kitchen</h5> */}
-                    <Nav>
-                        <NavDropdown
+                    <Nav >
+                        <NavDropdown 
                             id="nav-dropdown-dark-example"
                             title="Kitchen Appliance"
                             menuVariant="dark"
