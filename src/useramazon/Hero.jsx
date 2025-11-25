@@ -2,7 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Carousel from 'react-bootstrap/Carousel';
 function Hero() {
   return (
-    <section className="bg-black p-2">
+    <section className="bg-black p-1">
       <div id="heroCarousel" className="carousel slide" data-bs-ride="carousel">
 
         <div className="carousel-indicators">
@@ -803,6 +803,247 @@ function Hero() {
 
         </div>
       </div>
+
+
+
+      <div id="productCarousel" className="carousel slide  bg-white" data-bs-ride="false">
+        <h5 className='fw-bold '>Inspired by Your browsing history</h5>
+        <hr />
+        <div className="carousel-inner">
+
+          <div className="carousel-item active">
+            <div className="d-flex justify-content-center gap-2">
+              <div className="col-6 col-sm-3 col-lg-2">
+                <div className="card border-0">
+                  <img src="https://m.media-amazon.com/images/G/31/IMG20/Home/2024/HFRevamp/Layers._SS400_QL85_.jpg" className="card-img-top" style={{
+                    height: "300px",
+                    width: "100%",
+                    objectFit: "contain"
+                  }} />
+                  <div className="card-body text-center p-0 m-0">
+                    <h6 className="card-title text-primary">Lukzer 2 Seater Green Leaves Universal Sofa Cover | 360° Fully Covered Anti-Slip Washable........</h6>
+                    <div className="card-body p-0 m-0">
+                      <p className="card-text small text-danger">Rs:885</p>
+                      <p className="card-text small text-black">Free delivery by 23-oct</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div className="col-6 col-sm-3 col-lg-2">
+                <div className="card border-0">
+                  <img src="https://m.media-amazon.com/images/I/51ZiROH9i6L._SR480,440_AC_.jpg" className="card-img-top" style={{
+                    height: "300px",
+                    width: "100%",
+                    objectFit: "contain"
+                  }} />
+                  <div className="card-body text-center p-0 m-0">
+                    <h6 className="card-title text-primary">Xtrim Puzzle Exercise Mat High-Density EVA Foam Mat, Interlocking Tiles, Shock Proof, ..........</h6>
+                    <div className="card-body p-0 m-0">
+                      <p className="card-text small text-danger">Rs:885</p>
+                      <p className="card-text small text-black">Free delivery by 23-oct</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div className="col-6 col-sm-3 col-lg-2">
+                <div className="card border-0" >
+                  <img src="https://m.media-amazon.com/images/I/21o88VcjQ7L._SR480,440_AC_.jpg" className="card-img-top" style={{
+                    height: "300px",
+                    width: "100%",
+                    objectFit: "contain"
+                  }} />
+                  <div className="card-body text-center p-0 m-0">
+                    <h6 className="card-title text-primary">Boldfit Yoga Mat for Women & Men - TPE Eco Friendly 6mm thickness Non Slip Classic Pro Exercise Mat for .....</h6>
+                    <div className="card-body p-0 m-0">
+                      <p className="card-text small text-danger">Rs:885</p>
+                      <p className="card-text small text-black">Free delivery by 23-oct</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div className="col-6 col-sm-3 col-lg-2">
+                <div className="card border-0">
+                  <img src="https://m.media-amazon.com/images/I/41UIxg3-XPL._SR480,440_AC_.jpg" className="card-img-top" style={{
+                    height: "300px",
+                    width: "100%",
+                    objectFit: "contain"
+                  }} />
+                  <div className="card-body text-center p-0 m-0">
+                    <h6 className="card-title text-primary">Nermosa Women Printed Anarkali Kurta and Pant Set with Dupatta</h6>
+                    <div className="card-body p-0 m-0">
+                      <p className="card-text small text-danger">Rs:885</p>
+                      <p className="card-text small text-black">Free delivery by 23-oct</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div className="col-6 col-sm-3 col-lg-2">
+                <div className="card border-0">
+                  <img src="https://m.media-amazon.com/images/I/319WYcef6JL._SR480,440_AC_.jpg" className="card-img-top" style={{
+                    height: "300px",
+                    width: "100%",
+                    objectFit: "contain"
+                  }} />
+                  <div className="card-body text-center p-0 m-0">
+                    <h6 className="card-title text-primary">Boldfit Blaze Football Practise Foot Ball Training Football Size 5 Original for All Ages Group Rubber ......</h6>
+                    <div className="card-body  p-0 m-0">
+                      <p className="card-text small text-danger">Rs:885</p>
+                      <p className="card-text small text-black">Free delivery by 23-oct</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div className="col-6 col-sm-3 col-lg-2">
+                <div className="card border-0" >
+                  <img src="https://m.media-amazon.com/images/I/31AopMCvXPL._SR480,440_AC_.jpg" className="card-img-top" style={{
+                    height: "300px",
+                    width: "100%",
+                    objectFit: "contain"
+                  }} />
+                  <div className="card-body text-center p-0 m-0">
+                    <h6 className="card-title text-primary">Kore PVC 10KG Combo 3 Home Gym Set with One 3 Ft Curl and One Pair Dumbbell Rods with Gym Bag and Gym....</h6>
+                    <div className="card-body p-0 m-0">
+                      <p className="card-text small text-danger">Rs:885</p>
+                      <p className="card-text small text-black">Free delivery by 23-oct</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <div className="carousel-item ">
+            <div className="d-flex justify-content-center gap-2">
+
+              <div className="col-6 col-sm-3 col-lg-2">
+                <div className="card border-0" >
+                  <img src="https://via.placeholder.com/150" className="card-img-top" style={{
+                    height: "300px",
+                    width: "100%",
+                    objectFit: "contain"
+                  }} />
+                  <div className="card-body text-center p-0 m-0">
+                    <h6 className="card-title text-primary">Product One</h6>
+                    <div className="card-bodyp-0 m-0">
+                      <p className="card-text small text-danger">Rs:885</p>
+                      <p className="card-text small text-black">Free delivery by 23-oct</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div className="col-6 col-sm-3 col-lg-2">
+                <div className="card border-0" >
+                  <img src="https://via.placeholder.com/150" className="card-img-top" style={{
+                    height: "300px",
+                    width: "100%",
+                    objectFit: "contain"
+                  }} />
+                  <div className="card-body text-center">
+                    <h6 className="card-title text-primary p-0 m-0">Product One</h6>
+                    <div className="card-body p-0 m-0">
+                      <p className="card-text small text-danger">Rs:885</p>
+                      <p className="card-text small text-black">Free delivery by 23-oct</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div className="col-6 col-sm-3 col-lg-2">
+                <div className="card border-0">
+                  <img src="https://via.placeholder.com/150" className="card-img-top" style={{
+                    height: "300px",
+                    width: "100%",
+                    objectFit: "contain"
+                  }} />
+                  <div className="card-body text-center p-0 m-0">
+                    <h6 className="card-title text-primary">Product One</h6>
+                    <div className="card-body p-0 m-0">
+                      <p className="card-text small text-danger">Rs:885</p>
+                      <p className="card-text small text-black">Free delivery by 23-oct</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div className="col-6 col-sm-3 col-lg-2">
+                <div className="card border-0" >
+                  <img src="https://via.placeholder.com/150" className="card-img-top" style={{
+                    height: "300px",
+                    width: "100%",
+                    objectFit: "contain"
+                  }} />
+                  <div className="card-body text-center p-0 m-0">
+                    <h6 className="card-title text-primary">Product One</h6>
+                    <div className="card-body p-0 m-0">
+                      <p className="card-text small text-danger">Rs:885</p>
+                      <p className="card-text small text-black">Free delivery by 23-oct</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div className="col-6 col-sm-3 col-lg-2">
+                <div className="card border-0" >
+                  <img src="https://via.placeholder.com/150" className="card-img-top" style={{
+                    height: "300px",
+                    width: "100%",
+                    objectFit: "contain"
+                  }} />
+                  <div className="card-body text-center">
+                    <h6 className="card-title text-primary p-0 m-0">Product One</h6>
+                    <div className="card-body p-0 m-0">
+                      <p className="card-text small text-danger">Rs:885</p>
+                      <p className="card-text small text-black">Free delivery by 23-oct</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div className="col-6 col-sm-3 col-lg-2">
+                <div className="card border-0">
+                  <img src="https://via.placeholder.com/150" className="card-img-top" style={{
+                    height: "300px",
+                    width: "100%",
+                    objectFit: "contain"
+                  }} />
+                  <div className="card-body text-center">
+                    <h6 className="card-title text-primary p-0 m-0">Product One</h6>
+                    <div className="card-body p-0 m-0">
+                      <p className="card-text small text-danger">Rs:885</p>
+                      <p className="card-text small text-black">Free delivery by 23-oct</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <button className="carousel-control-prev  " type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon "></span>
+        </button>
+
+        <button className="carousel-control-next " type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+          <span className="carousel-control-next-icon"></span>
+        </button>
+
+      </div>
+
 
     </section>
 

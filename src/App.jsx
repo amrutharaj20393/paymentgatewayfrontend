@@ -42,12 +42,13 @@ function App() {
         <Route path="/Registerpage" element={<Register />} />
         <Route path='/fashion' element={<Fashion />}></Route>
         <Route path='/appliances' element={<Appliances />}></Route>
-        <Route path='/product' element={<Product />}></Route>
+        <Route path='/product/:id' element={<Product />}></Route>
         <Route path='/Cart' element={<Cart />}></Route>
         <Route path='/checkout' element={<Checkout />}></Route>
         <Route path='/Otp' element={<Otppage/>}></Route>
         <Route path='/Loginpassword' element={<Loginpassword/>}></Route>
          <Route path='/orderpage' element={<Orderpage/>}></Route>
+
 
         <Route path='/sucess' element={<Payment />}></Route>
 

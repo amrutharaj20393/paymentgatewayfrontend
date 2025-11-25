@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { amazonloginApi, amazonloginemailApi, GoogleRegisterApi } from "../services/allApi";
 import { toast, ToastContainer } from 'react-toastify'
-import { AuthContext, otpContext } from "../context/ContextShare";
+import { AuthContext, googleStatusContext, otpContext } from "../context/ContextShare";
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
 function Login() {
@@ -10,6 +10,7 @@ function Login() {
    
     //const { userdetails } = useContext(userContext)
     const navigate = useNavigate()
+     const { setGoogleStatus } = useContext(googleStatusContext)
 
     const handleotp = async () => {
 
@@ -21,7 +22,7 @@ function Login() {
         else {
 
             const result = await amazonloginApi(email)
-            console.log(result)
+           // console.log(result)
             if (result.status == 200) {
                 sessionStorage.setItem("existingUser", JSON.stringify(result.data.existinguser))
               
@@ -45,13 +46,14 @@ function Login() {
     }
     const handleGooglelogin = async (credentialResponse) => {
         const details = jwtDecode(credentialResponse.credential)
-        console.log(details)
+        //console.log(details)
         const result = await GoogleRegisterApi({ username: details.name, email: details.email, password: 'googlepassword' })
-        //console.log(result)
+        console.log(result)
         if (result.status == 200) {
             toast.success("Login Successfully")
             sessionStorage.setItem("existingUser", JSON.stringify(result.data.existinguser))
             sessionStorage.setItem("token", result.data.token)
+             setGoogleStatus("registered")
             setTimeout(() => {
                 navigate('/')
             }, 1000)
@@ -138,7 +140,7 @@ function Login() {
                 onError={() => {
                     console.log('Login Failed')
                 }}
-            />;
+            />
             <ToastContainer theme='colored' position='top-center' autoClose={2000} />
         </div>
     );

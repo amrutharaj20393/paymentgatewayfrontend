@@ -22,8 +22,8 @@ function Loginpassword() {
 
             // setexistingUser(sessionStorage.getItem("existingUser"));
 
-            console.log(email)
-            console.log(password)
+            //console.log(email)
+            //console.log(password)
             const result = await amazonpasswordApi({ email, password })
             if (result.status == 200) {
                 //sessionStorage.setItem("existingUser", JSON.stringify(result.data.existinguser))
@@ -36,7 +36,7 @@ function Loginpassword() {
 
 
             }
-            else if (result.status == 400) {
+            else if (result.status == 404) {
 
                 toast.warning(result.response.data)
                 sessionStorage.removeItem("existingUser")
@@ -95,7 +95,7 @@ function Loginpassword() {
                     className="btn w-100"
                     style={{ background: "#f0c14b", borderColor: "#a88734" }} onClick={handleotp}
                 >
-                    Continue
+                    Login
                 </button>
 
 

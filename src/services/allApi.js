@@ -106,3 +106,11 @@ export const orderListApi = async (email) => {
     //get-all-medicines?search=${searchKey}
 
 }
+export const GetAProductApi = async (id) => {
+    return await commonApi('GET', `${serverUrl}/getaproduct/${id}`)
+}
+//delete a medicine
+export const updateProductQuantityApi = async (reqBody) => {
+
+    return await commonApi('POST', `${serverUrl}/updateproductquantity`,reqBody)
+}

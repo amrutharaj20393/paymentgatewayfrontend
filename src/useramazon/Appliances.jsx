@@ -1,25 +1,30 @@
 import React, { useContext, useEffect, useState } from 'react'
 
 import { Container, Row, Col, Carousel } from "react-bootstrap";
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
 import Card from 'react-bootstrap/Card';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+
 import { toast, ToastContainer } from 'react-toastify'
 import { addToCartAmazonApi, amazonallProductApi } from '../services/allApi';
 import { cartcountContext } from '../context/ContextShare';
+import { Link } from 'react-router-dom';
 
 function Appliances() {
     const [productlist, setProductlist] = useState([])
     const [tempArray, setTempArray] = useState([])
     const [tempArray1, setTempArray1] = useState([])
     const [tempArray2, setTempArray2] = useState([])
-     const [email, setEmail] = useState("")
-      const { setCartCount } = useContext(cartcountContext)
+    const [email, setEmail] = useState("")
+    const { setCartCount } = useContext(cartcountContext)
     const getProductdet = async () => {
         //console.log("hai")
         const result = await amazonallProductApi()
-        console.log(result)
+       // console.log(result)
         setProductlist(result.data)
         setTempArray(result.data)
         setTempArray1(result.data)
@@ -65,12 +70,12 @@ function Appliances() {
 
         console.log(email)
         const result = await addToCartAmazonApi({ data, email })
-    console.log(result)
+       // console.log(result)
         if (result.status == 200) {
-            console.log(result.data)
+          //  console.log(result.data)
             toast.success("Add To Cart Successfully")
             setCartCount(result.data)
-           // setCartstatus(result.data)
+            // setCartstatus(result.data)
 
         }
         else if (result.status == 400) {
@@ -92,7 +97,22 @@ function Appliances() {
             <div className='mt-3 bg-white '>
                 <div className="d-flex justify-content-between flex-wrap-0 align-items-center  shadow-2xl p-0">
                     <h4 className="fw-bold fw-light me-4">Amazon Home</h4>
-                    <h5 className="me-4 fw-light">Kitchen</h5>
+                    {/* <h5 className="me-4 fw-light">Kitchen</h5> */}
+                    <Nav>
+                        <NavDropdown
+                            id="nav-dropdown-dark-example"
+                            title="Kitchen Appliance"
+                            menuVariant="dark"
+
+                        >
+                            <NavDropdown.Item href="#action/3.1">Mixer Grinder</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.2">
+                                Juicers
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.3">Hand Blenders</NavDropdown.Item>
+
+                        </NavDropdown>
+                    </Nav>
                     <h5 className="me-4 fw-light">Large Appliances</h5>
                     <h5 className="me-4 fw-light">Dining</h5>
                     <h5 className="me-4 fw-light">Furniture</h5>
@@ -102,7 +122,7 @@ function Appliances() {
                     <h5 className="me-4 fw-light">Storage</h5>
                 </div>
                 <Row className='mt-2'>
-                    <Col sm={4}>
+                    <Col sm={3}>
 
                         <h4 className='ms-2'>Delivery day</h4>
                         <Form>
@@ -216,13 +236,13 @@ function Appliances() {
                     </Col>
 
                     {/* Products */}
-                    <Col sm={8} className='p-3'>
-                        <Row className='mt-3'>
+                    <Col sm={9} className='p-3 '>
+                        <Row className='mt-3  '>
                             {productlist.length > 0 ? (
                                 productlist.map((item) => (
-                                    <Col md={3} key={item._id}>
-                                        <Card className="h-100 text-center p-1">
-
+                                    <Col md={3} key={item._id} className='mt-5' >
+                                      <Link to={`/product/${item?._id}`} className="text-decoration-none" >
+                                      <Card className="h-100 text-center p-1 " >
                                             <Card.Img
                                                 src={item.image}
                                                 className="img-fluid rounded"
@@ -250,10 +270,11 @@ function Appliances() {
                                                     Free Delivery by <span className="fw-bold text-dark">Sat, 14 Sept</span>
                                                 </p>
 
-                                                <Button variant="warning" className='rounded mt-1' onClick={() => handleAddCart(item)} >Add to cart</Button>
+                                               
                                             </Card.Body>
 
-                                        </Card>
+                                        </Card></Link>  
+                                         {/* <Button variant="warning" className='rounded mt-1' onClick={() => handleAddCart(item)} >Add to cart</Button> */}
                                     </Col>
                                 ))
                             ) : (
@@ -263,10 +284,250 @@ function Appliances() {
 
                     </Col>
                 </Row>
+                <hr />
+                <h5 className='fw-bold '>Inspired by Your browsing history</h5>
+                <div className=" container ">
+                    <div id="productCarousel" className="carousel slide mb-2 " data-bs-ride="false">
 
- 
+                        <div className="carousel-inner">
+
+                            <div className="carousel-item active">
+                                <div className="d-flex justify-content-center gap-2">
+                                    <div className="col-6 col-sm-3 col-lg-2">
+                                        <div className="card border-0">
+                                            <img src="https://m.media-amazon.com/images/G/31/IMG20/Home/2024/HFRevamp/Layers._SS400_QL85_.jpg" className="card-img-top" style={{
+                                                height: "300px",
+                                                width: "100%",
+                                                objectFit: "contain"
+                                            }} />
+                                            <div className="card-body text-center p-0 m-0">
+                                                <h6 className="card-title text-primary">Lukzer 2 Seater Green Leaves Universal Sofa Cover | 360° Fully Covered Anti-Slip Washable........</h6>
+                                                <div className="card-body p-0 m-0">
+                                                    <p className="card-text small text-danger">Rs:885</p>
+                                                    <p className="card-text small text-black">Free delivery by 23-oct</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div className="col-6 col-sm-3 col-lg-2">
+                                        <div className="card border-0">
+                                            <img src="https://m.media-amazon.com/images/I/51ZiROH9i6L._SR480,440_AC_.jpg" className="card-img-top" style={{
+                                                height: "300px",
+                                                width: "100%",
+                                                objectFit: "contain"
+                                            }} />
+                                            <div className="card-body text-center p-0 m-0">
+                                                <h6 className="card-title text-primary">Xtrim Puzzle Exercise Mat High-Density EVA Foam Mat, Interlocking Tiles, Shock Proof, ..........</h6>
+                                                <div className="card-body p-0 m-0">
+                                                    <p className="card-text small text-danger">Rs:885</p>
+                                                    <p className="card-text small text-black">Free delivery by 23-oct</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div className="col-6 col-sm-3 col-lg-2">
+                                        <div className="card border-0" >
+                                            <img src="https://m.media-amazon.com/images/I/21o88VcjQ7L._SR480,440_AC_.jpg" className="card-img-top" style={{
+                                                height: "300px",
+                                                width: "100%",
+                                                objectFit: "contain"
+                                            }} />
+                                            <div className="card-body text-center p-0 m-0">
+                                                <h6 className="card-title text-primary">Boldfit Yoga Mat for Women & Men - TPE Eco Friendly 6mm thickness Non Slip Classic Pro Exercise Mat for .....</h6>
+                                                <div className="card-body p-0 m-0">
+                                                    <p className="card-text small text-danger">Rs:885</p>
+                                                    <p className="card-text small text-black">Free delivery by 23-oct</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div className="col-6 col-sm-3 col-lg-2">
+                                        <div className="card border-0">
+                                            <img src="https://m.media-amazon.com/images/I/41UIxg3-XPL._SR480,440_AC_.jpg" className="card-img-top" style={{
+                                                height: "300px",
+                                                width: "100%",
+                                                objectFit: "contain"
+                                            }} />
+                                            <div className="card-body text-center p-0 m-0">
+                                                <h6 className="card-title text-primary">Nermosa Women Printed Anarkali Kurta and Pant Set with Dupatta</h6>
+                                                <div className="card-body p-0 m-0">
+                                                    <p className="card-text small text-danger">Rs:885</p>
+                                                    <p className="card-text small text-black">Free delivery by 23-oct</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div className="col-6 col-sm-3 col-lg-2">
+                                        <div className="card border-0">
+                                            <img src="https://m.media-amazon.com/images/I/319WYcef6JL._SR480,440_AC_.jpg" className="card-img-top" style={{
+                                                height: "300px",
+                                                width: "100%",
+                                                objectFit: "contain"
+                                            }} />
+                                            <div className="card-body text-center p-0 m-0">
+                                                <h6 className="card-title text-primary">Boldfit Blaze Football Practise Foot Ball Training Football Size 5 Original for All Ages Group Rubber ......</h6>
+                                                <div className="card-body  p-0 m-0">
+                                                    <p className="card-text small text-danger">Rs:885</p>
+                                                    <p className="card-text small text-black">Free delivery by 23-oct</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div className="col-6 col-sm-3 col-lg-2">
+                                        <div className="card border-0" >
+                                            <img src="https://m.media-amazon.com/images/I/31AopMCvXPL._SR480,440_AC_.jpg" className="card-img-top" style={{
+                                                height: "300px",
+                                                width: "100%",
+                                                objectFit: "contain"
+                                            }} />
+                                            <div className="card-body text-center p-0 m-0">
+                                                <h6 className="card-title text-primary">Kore PVC 10KG Combo 3 Home Gym Set with One 3 Ft Curl and One Pair Dumbbell Rods with Gym Bag and Gym....</h6>
+                                                <div className="card-body p-0 m-0">
+                                                    <p className="card-text small text-danger">Rs:885</p>
+                                                    <p className="card-text small text-black">Free delivery by 23-oct</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div className="carousel-item ">
+                                <div className="d-flex justify-content-center gap-2">
+
+                                    <div className="col-6 col-sm-3 col-lg-2">
+                                        <div className="card border-0" >
+                                            <img src="https://via.placeholder.com/150" className="card-img-top" style={{
+                                                height: "300px",
+                                                width: "100%",
+                                                objectFit: "contain"
+                                            }} />
+                                            <div className="card-body text-center p-0 m-0">
+                                                <h6 className="card-title text-primary">Product One</h6>
+                                                <div className="card-bodyp-0 m-0">
+                                                    <p className="card-text small text-danger">Rs:885</p>
+                                                    <p className="card-text small text-black">Free delivery by 23-oct</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div className="col-6 col-sm-3 col-lg-2">
+                                        <div className="card border-0" >
+                                            <img src="https://via.placeholder.com/150" className="card-img-top" style={{
+                                                height: "300px",
+                                                width: "100%",
+                                                objectFit: "contain"
+                                            }} />
+                                            <div className="card-body text-center">
+                                                <h6 className="card-title text-primary p-0 m-0">Product One</h6>
+                                                <div className="card-body p-0 m-0">
+                                                    <p className="card-text small text-danger">Rs:885</p>
+                                                    <p className="card-text small text-black">Free delivery by 23-oct</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div className="col-6 col-sm-3 col-lg-2">
+                                        <div className="card border-0">
+                                            <img src="https://via.placeholder.com/150" className="card-img-top" style={{
+                                                height: "300px",
+                                                width: "100%",
+                                                objectFit: "contain"
+                                            }} />
+                                            <div className="card-body text-center p-0 m-0">
+                                                <h6 className="card-title text-primary">Product One</h6>
+                                                <div className="card-body p-0 m-0">
+                                                    <p className="card-text small text-danger">Rs:885</p>
+                                                    <p className="card-text small text-black">Free delivery by 23-oct</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div className="col-6 col-sm-3 col-lg-2">
+                                        <div className="card border-0" >
+                                            <img src="https://via.placeholder.com/150" className="card-img-top" style={{
+                                                height: "300px",
+                                                width: "100%",
+                                                objectFit: "contain"
+                                            }} />
+                                            <div className="card-body text-center p-0 m-0">
+                                                <h6 className="card-title text-primary">Product One</h6>
+                                                <div className="card-body p-0 m-0">
+                                                    <p className="card-text small text-danger">Rs:885</p>
+                                                    <p className="card-text small text-black">Free delivery by 23-oct</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div className="col-6 col-sm-3 col-lg-2">
+                                        <div className="card border-0" >
+                                            <img src="https://via.placeholder.com/150" className="card-img-top" style={{
+                                                height: "300px",
+                                                width: "100%",
+                                                objectFit: "contain"
+                                            }} />
+                                            <div className="card-body text-center">
+                                                <h6 className="card-title text-primary p-0 m-0">Product One</h6>
+                                                <div className="card-body p-0 m-0">
+                                                    <p className="card-text small text-danger">Rs:885</p>
+                                                    <p className="card-text small text-black">Free delivery by 23-oct</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div className="col-6 col-sm-3 col-lg-2">
+                                        <div className="card border-0">
+                                            <img src="https://via.placeholder.com/150" className="card-img-top" style={{
+                                                height: "300px",
+                                                width: "100%",
+                                                objectFit: "contain"
+                                            }} />
+                                            <div className="card-body text-center">
+                                                <h6 className="card-title text-primary p-0 m-0">Product One</h6>
+                                                <div className="card-body p-0 m-0">
+                                                    <p className="card-text small text-danger">Rs:885</p>
+                                                    <p className="card-text small text-black">Free delivery by 23-oct</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button className="carousel-control-prev  " type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                            <span className="carousel-control-prev-icon "></span>
+                        </button>
+
+                        <button className="carousel-control-next " type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                            <span className="carousel-control-next-icon"></span>
+                        </button>
+
+                    </div>
+                </div>
+
+
             </div>
- <ToastContainer theme='colored' position='top-center' autoClose={2000} />
+            <ToastContainer theme='colored' position='top-center' autoClose={2000} />
         </>
     )
 }

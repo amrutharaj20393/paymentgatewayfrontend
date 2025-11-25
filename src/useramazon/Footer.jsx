@@ -3,7 +3,11 @@ import { Container, Row, Col } from "react-bootstrap";
 function Footer() {
   return (
     <>
-     <footer className="bg-dark text-light pt-5 ">
+     <footer className="bg-dark text-light   ">
+ <div className="bg-white text-black text-center py-3 border-top border-secondary">
+
+       
+      </div>
 
       <div className="text-center py-3 bg-secondary bg-opacity-25">
         <a href="#" className="text-light text-decoration-none">Back to top</a>

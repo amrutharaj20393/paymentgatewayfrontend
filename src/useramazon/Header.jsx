@@ -1,51 +1,84 @@
 import { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faShoppingCart, faUser, faLocation } from '@fortawesome/free-solid-svg-icons'
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Button } from 'react-bootstrap';
 import { useLocation } from "react-router-dom";
-import { AuthContext, cartcountContext } from "../context/ContextShare";
+import { AuthContext, cartcountContext, deleteContext, googleStatusContext, orderStatusContext } from "../context/ContextShare";
 import { getCartApi } from "../services/allApi";
 export default function Header() {
   const [open, setOpen] = useState(false);
-  //const [email, setEmail] = useState("")
- // const [token, setToken] = useState(() => sessionStorage.getItem("token") || "");
+  const [email, setEmail] = useState("")
+  // const [token, setToken] = useState(() => sessionStorage.getItem("token") || "");
   const { cartcount, setCartCount } = useContext(cartcountContext)
   const navigate = useNavigate()
   const location = useLocation();
   const { token, setToken } = useContext(AuthContext);
+  const { deleteStatus } = useContext(deleteContext)
+  const [carlist, setCartList] = useState([])
+  const { orderStatus } = useContext(orderStatusContext)
+  const { googleStatus,setGoogleStatus } = useContext(googleStatusContext)
   //const navigate = useNavigate();
 
   const handlelogout = () => {
     sessionStorage.removeItem("existingUser")
     sessionStorage.removeItem("token")
     setToken("")
+    // Reset your states
+    //setToken(null);
+    setGoogleStatus(false);
+
+    // Force redirect
+    navigate("/");
     navigate('/')
   }
 
   const getCartDet = async () => {
     const user = JSON.parse(sessionStorage.getItem("existingUser"));
-    const email = user.email
-    console.log(email)
-    //console.log(emailid)
-    const result = await getCartApi(email)
-    console.log(result)
-    if (result.status == 200) {
+    if (user) {
+      const email = user.email
+      //console.log(email)
+      //console.log(emailid)
+      const result = await getCartApi(email)
+      console.log(result)
+      if (result.status == 200) {
 
-      setCartCount(result.data.cartItems)
-      //if user donot change the quantity field
+        setCartList(result.data.cartItems)
+        //if user donot change the quantity field
+
+      }
+      else if (result.status == 401) {
+        console.log("no cart data")
+        setCartList([])
+        //setAMedicine([])
+
+      }
 
     }
-    else if (result.status == 401) {
-      console.log("no cart data")
-      //setAMedicine([])
 
-    }
   }
- 
+  console.log(cartcount)
   useEffect(() => {
+
+
     getCartDet()
-  }, [])
+  }, [deleteStatus])
+  useEffect(() => {
+
+    getCartDet()
+  }, [cartcount])
+  useEffect(() => {
+
+    getCartDet()
+  }, [orderStatus])
+
+
+  // useEffect(() => {
+  //   getCartDet()
+  // }, [cartcount])
+  //   useEffect(()=>{
+  // getCartDet()
+  //   },[deleteStatus])
 
   //console.log(cartcount)
   return (
@@ -65,7 +98,7 @@ export default function Header() {
 
           </div>
           <div className="ms-5">
-            <h6 className="small fw-normal">Update Location</h6>
+            <h6 className="small fw-normal"><FontAwesomeIcon icon={faLocation} className="me-3" />Update Location</h6>
             <h6 className="small fw-normal">Delivering to thrissur 686510</h6>
           </div>
 
@@ -112,12 +145,13 @@ export default function Header() {
 
 
           <div className="flex items-center gap-4">
-            {token ? (
+
+            {/* LOGIN / LOGOUT */}
+            {(token || googleStatus) ? (
               <Link to="/" onClick={handlelogout} className="hidden md:flex items-center gap-1 hover:text-yellow-400">
                 <FontAwesomeIcon icon={faUser} />
-                <span >Logout</span>
+                <span>Logout</span>
               </Link>
-
             ) : (
               <Link to="/Loginpage" className="hidden md:flex items-center gap-1 hover:text-yellow-400">
                 <FontAwesomeIcon icon={faUser} />
@@ -125,26 +159,30 @@ export default function Header() {
               </Link>
             )}
 
+            {/* ORDERS (Only if logged in) */}
+            {(token || googleStatus) && (
+              <Link to="/orderpage" className="hidden md:flex items-center gap-1 hover:text-yellow-400">
+                <span>Orders</span>
+              </Link>
+            )}
 
+            {/* CART (Only if logged in) */}
+            {(token || googleStatus) && (
+              <Link to="/Cart" className="relative flex items-center hover:text-yellow-400">
+                <FontAwesomeIcon icon={faShoppingCart} className="fa-lg" />
+                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-1 rounded-full">
+                  {carlist?.length}
+                </span>
+              </Link>
+            )}
 
-
-            {token && <Link to="/orderpage" className="hidden md:flex items-center gap-1 hover:text-yellow-400">
-
-              <span >Orders</span>
-            </Link>
-            }
-            {token && <Link to="/Cart" className="relative flex items-center hover:text-yellow-400">
-              <FontAwesomeIcon icon={faShoppingCart} className="fa-lg" />
-              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-1 rounded-full">
-                {cartcount?.length}
-              </span>
-            </Link>}
-
-            {/* Hamburger Menu for Mobile */}
+            {/* Mobile Menu */}
             <button className="md:hidden" onClick={() => setOpen(!open)}>
               <FontAwesomeIcon icon={faBars} className='fa-2x' />
             </button>
+
           </div>
+
         </div>
 
         {/* Mobile Search Bar */}
