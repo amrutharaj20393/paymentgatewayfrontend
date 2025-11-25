@@ -32,37 +32,44 @@ function Register() {
         else {
             console.log(username, email, password)
             const result1 = await amazonregisterApi({ username, email, password })
-           
-                if (result1.status == 200) {
-                    const result = await amazonloginemailApi({ email })
-                     console.log(result)
 
+            if (result1.status == 200) {
+                const result = await amazonloginemailApi({ email })
+                console.log(result)
+
+                if (result?.status === 200 && result.data?.otp) {
+                    console.log(result.data.otp);
                     toast.success(" Otp send to your mail id")
 
                     setOtp(result.data.otp)
                     setTimeout(() => {
                         navigate('/Otp')
                     }, 1000)
+                } else {
+                    console.error("OTP not received");
+                }
 
-                }
-                else if (result1.status == 400) {
 
-                    toast.warning("Email id already registered")
-                    setUserDetails({
-                        username: "",
-                        email: "",
-                        password: ""
-                    })
-                }
-                else {
-                    toast.error("something went wrong")
-                    setUserDetails({
-                        username: "",
-                        email: "",
-                        password: ""
-                    })
-                }
-            
+
+            }
+            else if (result1.status == 400) {
+
+                toast.warning("Email id already registered")
+                setUserDetails({
+                    username: "",
+                    email: "",
+                    password: ""
+                })
+            }
+            else {
+                toast.error("something went wrong")
+                setUserDetails({
+                    username: "",
+                    email: "",
+                    password: ""
+                })
+            }
+
             // console.log(result1)
 
         }
