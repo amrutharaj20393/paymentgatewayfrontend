@@ -34,20 +34,27 @@ function Register() {
             const result1 = await amazonregisterApi({ username, email, password })
 
             if (result1.status == 200) {
-                const result = await amazonloginemailApi({ email })
-                console.log(result)
+                toast.success(" Otp send to your mail id")
 
-                if (result?.status === 200 && result.data?.otp) {
-                    console.log(result.data.otp);
-                    toast.success(" Otp send to your mail id")
+                
+                 setTimeout(() => {
+                        navigate('/Loginpage')
+                   }, 1000)
 
-                    setOtp(result.data.otp)
-                    setTimeout(() => {
-                        navigate('/Otp')
-                    }, 1000)
-                } else {
-                    console.error("OTP not received");
-                }
+                // const result = await amazonloginemailApi({ email })
+                // console.log(result)
+
+                // if (result?.status === 200 && result.data?.otp) {
+                //     console.log(result.data.otp);
+                //     toast.success(" Otp send to your mail id")
+
+                //     setOtp(result.data.otp)
+                //     setTimeout(() => {
+                //         navigate('/Otp')
+                //     }, 1000)
+                // } else {
+                //     console.error("OTP not received");
+                // }
 
 
 
